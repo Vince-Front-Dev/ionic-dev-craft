@@ -1,73 +1,224 @@
-# Welcome to your Lovable project
+# Alex Developer - Portfolio Website
 
-## Project info
+A modern, responsive portfolio website built with React + Ionic, showcasing front-end development skills and projects.
 
-**URL**: https://lovable.dev/projects/76742908-45eb-4d6c-83c8-8eb317c0a1bd
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern Design**: Clean, professional interface with smooth animations
+- **Responsive**: Mobile-first design that works on all devices
+- **Dark/Light Mode**: Theme toggle with localStorage persistence
+- **PWA Ready**: Progressive Web App capabilities
+- **Fast Performance**: Optimized images and code splitting
+- **SEO Optimized**: Proper meta tags and semantic HTML
+- **Accessibility**: WCAG AA compliant with proper ARIA labels
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Framework**: React 18 + Ionic React
+- **Language**: TypeScript
+- **Styling**: Ionic CSS Variables + Custom CSS
+- **Icons**: Ionicons
+- **Router**: React Router (Ionic)
+- **Build Tool**: Vite
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/76742908-45eb-4d6c-83c8-8eb317c0a1bd) and start prompting.
+## 📦 Installation & Setup
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-**Use your preferred IDE**
+### Quick Start
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Install Ionic CLI globally (if not already installed)
+npm install -g @ionic/cli
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Install dependencies
+npm install
 
-Follow these steps:
+# Start development server
+ionic serve
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Or use npm
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:8100`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```bash
+# Build the project
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Or using Ionic CLI
+ionic build
+```
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Header.tsx      # Navigation header
+│   ├── Footer.tsx      # Site footer
+│   ├── ProjectCard.tsx # Project display card
+│   └── SkillBadge.tsx  # Skill proficiency badge
+├── pages/              # Main application pages
+│   ├── Index.tsx       # Home page
+│   ├── About.tsx       # About page
+│   ├── Projects.tsx    # Projects listing
+│   ├── ProjectDetail.tsx # Individual project details
+│   ├── Skills.tsx      # Skills overview
+│   └── Contact.tsx     # Contact form
+├── data/
+│   └── projects.ts     # Project data
+├── utils/
+│   └── theme.ts        # Theme management
+└── theme/
+    └── variables.css   # Ionic CSS variables
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## ✏️ Customization
 
-## How can I deploy this project?
+### Adding New Projects
 
-Simply open [Lovable](https://lovable.dev/projects/76742908-45eb-4d6c-83c8-8eb317c0a1bd) and click on Share -> Publish.
+Edit `src/data/projects.ts` to add new projects:
 
-## Can I connect a custom domain to my Lovable project?
+```typescript
+{
+  id: "unique-id",
+  title: "Project Name",
+  short: "Brief description",
+  long: "Detailed description...",
+  tech: ["React", "TypeScript"],
+  image: "/assets/project-image.jpg",
+  demo: "https://demo-link.com",
+  repo: "https://github.com/username/repo",
+  featured: true // Optional
+}
+```
 
-Yes, you can!
+### Updating Personal Information
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. **Contact Info**: Update `src/pages/Contact.tsx`
+2. **Bio & Experience**: Update `src/pages/About.tsx`
+3. **Skills**: Modify the skills array in `src/pages/Skills.tsx`
+4. **Social Links**: Update `src/components/Footer.tsx` and `src/components/Header.tsx`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Theming
+
+Customize colors and styling in:
+- `src/theme/variables.css` - Main color palette and Ionic variables
+- `src/index.css` - Custom animations and utility classes
+
+### Images
+
+- Add project images to `public/assets/`
+- Update avatar images in components
+- Generate or replace project screenshots
+
+## 📧 Contact Form Setup
+
+The contact form currently uses `mailto:` links. For real email functionality:
+
+### Option 1: EmailJS (Recommended)
+
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Install EmailJS: `npm install @emailjs/browser`
+3. Update `src/pages/Contact.tsx` with your EmailJS configuration:
+
+```typescript
+import emailjs from '@emailjs/browser';
+
+const sendEmail = (formData) => {
+  emailjs.send(
+    'YOUR_SERVICE_ID',
+    'YOUR_TEMPLATE_ID',
+    formData,
+    'YOUR_PUBLIC_KEY'
+  );
+};
+```
+
+### Option 2: Backend API
+
+Replace the form submission logic with your own backend API endpoint.
+
+## 🚀 Deployment
+
+### Netlify (Recommended)
+
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to Netlify
+3. Configure redirects for SPA routing
+
+### Vercel
+
+1. Connect your GitHub repository
+2. Vercel will automatically detect and deploy
+
+### GitHub Pages
+
+1. Install gh-pages: `npm install --save-dev gh-pages`
+2. Add deploy script to package.json
+3. Run: `npm run deploy`
+
+## 📱 PWA Features
+
+The app includes basic PWA capabilities:
+- Web App Manifest
+- Service Worker ready
+- Offline-first approach
+- Add to home screen support
+
+## 🔧 Development Scripts
+
+```bash
+# Start development server
+npm run dev
+ionic serve
+
+# Build for production
+npm run build
+ionic build
+
+# Type checking
+npm run type-check
+
+# Lint code
+npm run lint
+
+# Format code
+npm run format
+```
+
+## 🌟 Performance Tips
+
+- Images are optimized and lazy-loaded
+- Code splitting for better performance
+- CSS animations use GPU acceleration
+- Proper caching headers in production
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🆘 Support
+
+If you need help or have questions:
+- Check the [Ionic Documentation](https://ionicframework.com/docs)
+- Review [React Documentation](https://reactjs.org/docs)
+- Open an issue on GitHub
+
+---
+
+**Happy coding!** 🚀

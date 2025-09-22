@@ -1,0 +1,16 @@
+{
+  "name": "Alex Developer Portfolio",
+  "short_name": "Alex Dev",
+  "description": "Alex Developer's portfolio showcasing front-end development skills and projects",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
